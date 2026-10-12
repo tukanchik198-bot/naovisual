@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="auth_files/e40074f82c91f54a.css">
 <link rel="stylesheet" href="auth_files/22210f07b4ffce21.css">
 <style>
-body{margin:0;min-height:100vh;background:#0a0a0c;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
+body{margin:0;min-height:100vh;background:#0a0a0c;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden;overflow-y:auto}
 .rel{position:relative;min-height:100vh;width:100%;overflow:hidden;background:#0a0a0c}
 .bg-wrap{position:absolute;inset:0}
 .bg-img{width:100%;height:100%;object-fit:cover;object-position:center}
-.overlay{position:relative;z-index:1;display:flex;min-height:100vh;flex-direction:column}
+.overlay{position:relative;z-index:1;display:flex;min-height:100vh;flex-direction:column;padding:40px 48px}
 .blur1{position:absolute;inset:0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);mask-image:linear-gradient(to right,black 0%,transparent 100%);-webkit-mask-image:linear-gradient(to right,black 0%,transparent 100%)}
 .blur2{position:absolute;inset:0;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);mask-image:linear-gradient(to right,black 0%,transparent 80%);-webkit-mask-image:linear-gradient(to right,black 0%,transparent 80%)}
 .blur3{position:absolute;inset:0;backdrop-filter:blur(42px);-webkit-backdrop-filter:blur(42px);mask-image:linear-gradient(to right,black 0%,transparent 60%);-webkit-mask-image:linear-gradient(to right,black 0%,transparent 60%)}
@@ -26,7 +26,7 @@ body{margin:0;min-height:100vh;background:#0a0a0c;color:#e2e8f0;font-family:syst
 .content{position:relative;z-index:2;display:flex;flex-direction:column;padding:48px 40px 48px 64px;min-height:100vh}
 .logo{display:inline-block;margin-bottom:auto}
 .logo img{width:28px;height:28px}
-.form-area{flex:1;display:flex;align-items:center}
+.form-area{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 0}
 .form-wrap{width:100%;max-width:440px}
 h1{font-size:clamp(2rem,4.5vw,2.85rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;color:#fafafa;margin-bottom:12px;display:flex;flex-wrap:wrap}
 h1 span{display:inline-block}
@@ -51,6 +51,8 @@ h1 span{display:inline-block}
 .footer a:hover{color:#e2e8f0}
 .form-box{display:none}
 .form-box.active{display:block}
+@media (max-width:640px){.overlay{padding:24px 20px}.footer{left:20px;bottom:20px}h1{font-size:clamp(1.5rem,7vw,2.2rem)}.pw-wrap .inp{padding-right:110px}}
+@media (max-height:640px){.overlay{padding-top:20px;padding-bottom:20px}.logo{display:none}}
 </style>
 
 <style id="nao-ui-style">
@@ -93,7 +95,7 @@ img{max-width:100%;height:auto}
 @media (max-width:767px){#naoMobileNav{display:flex}body{padding-bottom:62px!important}}
 @media (max-width:480px){#naoAuthBtn{top:10px;right:10px}.nao-modal{padding:22px 18px;border-radius:16px}.nao-brand b{font-size:15px}}
 </style>
-</head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"></head>
 <!-- by https://t.me/darkvibe -->
 <body>
 <div class="rel">

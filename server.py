@@ -468,7 +468,11 @@ def serve_static(filepath):
     if not full_path.startswith(BASE_DIR):
         abort(403)
 
+    base = os.path.basename(full_path)
     if os.path.isfile(full_path):
+        for route, fname in ROUTE_MAP.items():
+            if fname == base:
+                return serve_protected_page(route)
         return send_file_safe(full_path)
 
     if os.path.isdir(full_path):

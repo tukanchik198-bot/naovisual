@@ -52,30 +52,46 @@ h1 span{display:inline-block}
 .form-box{display:none}
 .form-box.active{display:block}
 </style>
-<style id="nao-auth-style">
-#naoAuthBtn{position:fixed;top:12px;right:16px;z-index:2147483000;display:flex;align-items:center;gap:8px;font-family:system-ui,-apple-system,sans-serif}
-#naoAuthBtn button,#naoAuthBtn a{cursor:pointer;font-size:13px;font-weight:600;color:#c4b5fd;text-decoration:none;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);padding:6px 14px;border-radius:8px;font-family:inherit}
-#naoAuthBtn .nao-out{color:#f87171;background:none;border:none;font-weight:500;font-size:12px;opacity:.85;padding:6px}
-#naoOverlay{position:fixed;inset:0;z-index:2147483647;display:none;align-items:center;justify-content:center;background:rgba(3,3,6,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:16px}
-.nao-modal{position:relative;width:100%;max-width:360px;background:#0b0b0e;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px 22px;font-family:system-ui,-apple-system,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.6);color:#e4e4e7}
-.nao-modal h2{margin:0 0 16px;font-size:18px;font-weight:600;color:#f4f4f5}
-#naoClose{position:absolute;top:12px;right:14px;background:none;border:none;color:#8a8a95;font-size:22px;line-height:1;cursor:pointer}
-.nao-tabs{display:flex;gap:6px;background:rgba(255,255,255,.04);border-radius:10px;padding:4px;margin-bottom:16px}
-.nao-tab{flex:1;cursor:pointer;border:none;background:none;font-family:inherit;font-size:13px;font-weight:600;color:#8a8a95;padding:8px;border-radius:8px}
-.nao-tab.active{background:rgba(124,58,237,.22);color:#c4b5fd}
+
+<style id="nao-ui-style">
+html,body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+#naoUI{font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+#naoAuthBtn{position:fixed;top:12px;right:16px;z-index:2147483000;display:flex;align-items:center;gap:8px}
+#naoAuthBtn button,#naoAuthBtn a{cursor:pointer;font-size:13px;font-weight:600;color:#c4b5fd;text-decoration:none;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.32);padding:7px 15px;border-radius:999px;font-family:inherit;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#naoAuthBtn button:hover,#naoAuthBtn a:hover{background:rgba(124,58,237,.3)}
+#naoAuthBtn .nao-out{color:#f87171;background:none;border:none;font-weight:500;font-size:12px;opacity:.85;padding:7px 6px}
+#naoOverlay{position:fixed;inset:0;z-index:2147483647;display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;background:rgba(3,3,6,.74);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#naoOverlay.open{display:block}
+.nao-center{min-height:100%;display:flex;align-items:center;justify-content:center;padding:22px 16px}
+.nao-modal{position:relative;width:100%;max-width:380px;margin:auto;background:linear-gradient(165deg,#15151b 0%,#0b0b0e 60%);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:26px 24px 24px;color:#e4e4e7;box-shadow:0 30px 90px rgba(0,0,0,.65)}
+.nao-brand{display:flex;align-items:center;gap:10px;margin:0 34px 18px 0}
+.nao-brand .nao-dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(150deg,#a78bfa,#7c3aed);box-shadow:0 0 18px rgba(124,58,237,.6)}
+.nao-brand b{font-size:16px;letter-spacing:.2px;color:#f4f4f5}
+#naoClose{position:absolute;top:12px;right:14px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:8px;color:#9a9aa5;font-size:18px;line-height:1;cursor:pointer}
+#naoClose:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nao-tabs{display:flex;gap:6px;background:rgba(255,255,255,.04);border-radius:11px;padding:4px;margin-bottom:18px}
+.nao-tab{flex:1;cursor:pointer;border:none;background:none;font-family:inherit;font-size:13px;font-weight:600;color:#8a8a95;padding:9px;border-radius:8px;transition:.15s}
+.nao-tab.active{background:rgba(124,58,237,.24);color:#c4b5fd}
 .nao-field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
 .nao-field label{font-size:12px;color:#a1a1aa}
-.nao-field input{width:100%;box-sizing:border-box;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:10px 12px;color:#f4f4f5;font-size:14px;outline:none;font-family:inherit}
-.nao-field input:focus{border-color:rgba(124,58,237,.5)}
-.nao-primary{width:100%;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:#fff;background:rgba(124,58,237,.9);border:none;border-radius:9px;padding:11px;margin-top:4px}
-.nao-primary:hover{background:#7c3aed}
-.nao-msg{min-height:16px;font-size:12px;margin:0 0 6px}
-.nao-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
-.nao-row span:first-child{color:#8a8a95}
-.nao-row span:last-child{color:#e4e4e7;font-weight:500;text-align:right;word-break:break-word}
-.nao-actions{display:flex;gap:8px;margin-top:16px}
-.nao-btn{flex:1;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:#c4b5fd;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.3);border-radius:9px;padding:9px}
-.nao-btn.danger{color:#f87171;background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.3)}
+.nao-field input{width:100%;box-sizing:border-box;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:11px 13px;color:#f4f4f5;font-size:14px;outline:none;font-family:inherit;-webkit-appearance:none}
+.nao-field input:focus{border-color:rgba(124,58,237,.6);background:rgba(124,58,237,.06)}
+.nao-primary{width:100%;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:#fff;background:linear-gradient(150deg,#8b5cf6,#6d28d9);border:none;border-radius:10px;padding:12px;margin-top:4px}
+.nao-primary:hover{filter:brightness(1.12)}
+.nao-msg{min-height:16px;font-size:12px;margin:2px 0 6px}
+.nao-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
+.nao-row span:first-child{color:#a1a1aa}
+.nao-row span:last-child{color:#f4f4f5;font-weight:600;text-align:right;word-break:break-word}
+.nao-actions{display:flex;gap:8px;margin-top:18px}
+.nao-btn{flex:1;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:#c4b5fd;background:rgba(124,58,237,.16);border:1px solid rgba(124,58,237,.3);border-radius:10px;padding:11px}
+.nao-btn:hover{background:rgba(124,58,237,.28)}
+.nao-btn.danger{color:#f87171;border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.1)}
+#naoMobileNav{position:fixed;left:0;right:0;bottom:0;z-index:2147482000;display:none;justify-content:space-around;align-items:center;padding:8px 6px calc(8px + env(safe-area-inset-bottom));background:rgba(9,9,12,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.07)}
+#naoMobileNav a{flex:1;text-align:center;font-family:system-ui,sans-serif;font-size:11px;font-weight:600;color:#a1a1aa;text-decoration:none;padding:6px 2px}
+#naoMobileNav a:active{color:#c4b5fd}
+@media (max-width:767px){#naoMobileNav{display:flex}body{padding-bottom:62px!important}}
+@media (max-width:480px){#naoAuthBtn{top:10px;right:10px}.nao-modal{padding:22px 18px;border-radius:16px}.nao-brand b{font-size:15px}}
 </style>
 </head>
 <!-- by https://t.me/darkvibe -->
@@ -121,113 +137,8 @@ h1 span{display:inline-block}
 var lg=true;
 function sw(){lg=!lg;document.getElementById('f_login').classList.toggle('active',lg);document.getElementById('f_reg').classList.toggle('active',!lg);document.getElementById('title').innerHTML=lg?'<span>С возвращением в </span><span>NaoVisuals</span>':'<span>Регистрация в </span><span>NaoVisuals</span>';document.getElementById('sub').textContent=lg?'Войдите в свой аккаунт':'Создайте новый аккаунт';document.getElementById('sw_l').textContent=lg?'Нет аккаунта? ':'Уже есть аккаунт? ';document.getElementById('sw_b').textContent=lg?'Регистрация':'Войти'}
 </script>
-<div id="naoAuthBtn"></div>
-<div id="naoOverlay">
-  <div class="nao-modal">
-    <button id="naoClose" aria-label="Close">&times;</button>
-    <div id="naoAuthView">
-      <h2>NaoVisuals</h2>
-      <div class="nao-tabs">
-        <button class="nao-tab active" data-tab="login">Вход</button>
-        <button class="nao-tab" data-tab="reg">Регистрация</button>
-      </div>
-      <div id="naoPaneLogin">
-        <div class="nao-field"><label>Логин или email</label><input id="naoLoginId" autocomplete="username"></div>
-        <div class="nao-field"><label>Пароль</label><input id="naoLoginPw" type="password" autocomplete="current-password"></div>
-        <div class="nao-msg" id="naoLoginErr"></div>
-        <button class="nao-primary" data-act="login">Войти</button>
-      </div>
-      <div id="naoPaneReg" hidden>
-        <div class="nao-field"><label>Логин</label><input id="naoRegUn"></div>
-        <div class="nao-field"><label>Email</label><input id="naoRegEm" type="email"></div>
-        <div class="nao-field"><label>Пароль</label><input id="naoRegPw" type="password"></div>
-        <div class="nao-field"><label>Повторите пароль</label><input id="naoRegPw2" type="password"></div>
-        <div class="nao-msg" id="naoRegErr"></div>
-        <button class="nao-primary" data-act="register">Создать аккаунт</button>
-      </div>
-    </div>
-    <div id="naoProfileView" hidden>
-      <h2>Профиль</h2>
-      <div class="nao-row"><span>Логин</span><span id="pLogin">—</span></div>
-      <div class="nao-row"><span>Почта</span><span id="pEmail">—</span></div>
-      <div class="nao-row"><span>Зарегистрирован</span><span id="pCreated">—</span></div>
-      <div class="nao-row"><span>Подписка</span><span id="pSub">Нет подписки</span></div>
-      <div class="nao-row"><span>HWID</span><span id="pHwid">—</span></div>
-      <div class="nao-row"><span>Всего аккаунтов в базе</span><span id="pCount">0</span></div>
-      <div class="nao-actions">
-        <button class="nao-btn" data-act="changepw">Сменить пароль</button>
-        <button class="nao-btn danger" data-act="logout">Выйти</button>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  if(document.getElementById('__auth_panel')) return;
-  var USERS='nao_users', SESS='nao_session';
-  var $=function(id){return document.getElementById(id);};
-  function loadUsers(){try{return JSON.parse(localStorage.getItem(USERS))||{};}catch(e){return {};}}
-  function saveUsers(u){localStorage.setItem(USERS,JSON.stringify(u));}
-  function hash(salt,pw){var str=salt+'::'+pw,h=0x811c9dc5;for(var i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return ('00000000'+h.toString(16)).slice(-8)+str.length.toString(16);}
-  function genHwid(){var a='0123456789ABCDEF',s='NVV-';for(var i=0;i<16;i++){if(i>0&&i%4===0)s+='-';s+=a[Math.floor(Math.random()*16)];}return s;}
-  function sessionUser(){return localStorage.getItem(SESS)||'';}
-  function setSession(u){if(u)localStorage.setItem(SESS,u);else localStorage.removeItem(SESS);}
-  function render(){var b=$('naoAuthBtn'),cur=sessionUser();
-    b.innerHTML=cur?('<a href="#" data-act="open-profile">'+cur+'</a><button class="nao-out" data-act="logout">Выйти</button>')
-                   :'<button data-act="open-auth">Войти</button>';}
-  function openO(){$('naoOverlay').style.display='flex';}
-  function closeO(){$('naoOverlay').style.display='none';}
-  function setTab(t){var isL=t==='login';$('naoPaneLogin').hidden=!isL;$('naoPaneReg').hidden=isL;
-    var tabs=document.querySelectorAll('.nao-tab');for(var i=0;i<tabs.length;i++)tabs[i].className='nao-tab'+(tabs[i].getAttribute('data-tab')===t?' active':'');$('naoLoginErr').textContent='';$('naoRegErr').textContent='';}
-  function showAuth(t){$('naoProfileView').hidden=true;$('naoAuthView').hidden=false;setTab(t||'login');$('naoOverlay').style.display='flex';}
-  function showProfile(){var u=loadUsers()[localStorage.getItem(SESS)||''];if(!u){localStorage.removeItem(SESS);render();showAuth('login');return;}
-    $('pLogin').textContent=u.username;$('pEmail').textContent=u.email||'—';$('pCreated').textContent=u.created?new Date(u.created).toLocaleString('ru-RU'):'—';
-    $('pSub').textContent=u.sub||'Нет подписки';$('pHwid').textContent=u.hwid||'—';$('pCount').textContent=String(Object.keys(loadUsers()).length);
-    $('naoAuthView').hidden=true;$('naoProfileView').hidden=false;$('naoOverlay').style.display='flex';}
-  function msg(id,txt,ok){var e=$(id);e.textContent=txt;e.style.color=ok?'#4ade80':'#f87171';}
-  document.addEventListener('click',function(ev){
-    var el=ev.target;var t=el.closest?el.closest('[data-act],[data-tab]'):null;if(!t)return;
-    var tab=t.getAttribute('data-tab');if(tab){ev.preventDefault();setTab(tab);return;}
-    var act=t.getAttribute('data-act');
-    if(act==='open-auth'){ev.preventDefault();showAuth('login');}
-    else if(act==='open-profile'){ev.preventDefault();showProfile();}
-    else if(act==='logout'){ev.preventDefault();localStorage.removeItem(SESS);render();$('naoOverlay').style.display='none';}
-    else if(act==='register'){
-      ev.preventDefault();
-      var un=$('naoRegUn').value.trim(),em=$('naoRegEm').value.trim(),pw=$('naoRegPw').value,pw2=$('naoRegPw2').value;
-      if(!un||!em||!pw){msg('naoRegErr','Заполните все поля');return;}
-      if(pw!==pw2){msg('naoRegErr','Пароли не совпадают');return;}
-      if(pw.length<4){msg('naoRegErr','Пароль слишком короткий (мин. 4 символа)');return;}
-      var us=loadUsers();
-      for(var k in us){if(us[k].username.toLowerCase()===un.toLowerCase()){msg('naoRegErr','Такой логин уже занят');return;}
-        if((us[k].email||'').toLowerCase()===em.toLowerCase()){msg('naoRegErr','Эта почта уже используется');return;}}
-      var salt=Math.random().toString(36).slice(2);
-      us[un]={username:un,email:em,salt:salt,hash:hash(salt,pw),created:Date.now(),sub:null,hwid:'NVV-'+Math.random().toString(36).slice(2,10).toUpperCase()};
-      saveUsers(us);localStorage.setItem(SESS,un);render();msg('naoRegErr','Аккаунт создан!',true);
-      setTimeout(showProfile,500);
-    }
-    else if(act==='login'){
-      ev.preventDefault();
-      var id=$('naoLoginId').value.trim(),p=$('naoLoginPw').value,us=loadUsers(),found=null;
-      for(var k in us){if(us[k].username.toLowerCase()===id.toLowerCase()||(us[k].email||'').toLowerCase()===id.toLowerCase()){found=us[k];break;}}
-      if(!found){msg('naoLoginErr','Пользователь не найден');return;}
-      if(hash(found.salt,p)!==found.hash){msg('naoLoginErr','Неверный пароль');return;}
-      localStorage.setItem(SESS,found.username);render();showProfile();
-    }
-    else if(act==='changepw'){
-      ev.preventDefault();
-      var u=loadUsers()[localStorage.getItem(SESS)||''];if(!u)return;
-      var cur=prompt('Текущий пароль:');if(cur===null)return;
-      if(hash(u.salt,cur)!==u.hash){alert('Неверный текущий пароль');return;}
-      var np=prompt('Новый пароль:');if(!np)return;
-      if(np.length<4){alert('Пароль слишком короткий');return;}
-      var us=loadUsers();us[u.username].salt=Math.random().toString(36).slice(2);us[u.username].hash=hash(us[u.username].salt,np);saveUsers(us);
-      alert('Пароль изменён');
-    }
-  });
-  $('naoOverlay').addEventListener('click',function(ev){if(ev.target&&(ev.target.id==='naoOverlay'||ev.target.id==='naoClose'))$('naoOverlay').style.display='none';});
-  render();
-})();
-</script>
+<div id="naoUI"><div id="naoAuthBtn"></div><div id="naoOverlay"><div class="nao-center"><div class="nao-modal"><button id="naoClose" data-act="close" aria-label="Закрыть">&times;</button><div class="nao-brand"><span class="nao-dot"></span><b>NaoVisuals</b></div><div id="naoAuthView"><div class="nao-tabs"><button class="nao-tab active" data-tab="login">Вход</button><button class="nao-tab" data-tab="register">Регистрация</button></div><div id="naoPaneLogin"><div class="nao-field"><label>Логин или email</label><input id="naoLoginId" autocomplete="username"></div><div class="nao-field"><label>Пароль</label><input id="naoLoginPw" type="password" autocomplete="current-password"></div><div class="nao-msg" id="naoLoginErr"></div><button class="nao-primary" data-act="login">Войти</button></div><div id="naoPaneReg" hidden><div class="nao-field"><label>Логин</label><input id="naoRegUn" autocomplete="username"></div><div class="nao-field"><label>Email</label><input id="naoRegEm" type="email" autocomplete="email"></div><div class="nao-field"><label>Пароль</label><input id="naoRegPw" type="password" autocomplete="new-password"></div><div class="nao-field"><label>Повторите пароль</label><input id="naoRegPw2" type="password" autocomplete="new-password"></div><div class="nao-msg" id="naoRegErr"></div><button class="nao-primary" data-act="register">Создать аккаунт</button></div></div><div id="naoProfileView" hidden><div class="nao-row"><span>Логин</span><span id="pLogin">—</span></div><div class="nao-row"><span>Email</span><span id="pEmail">—</span></div><div class="nao-row"><span>Дата регистрации</span><span id="pCreated">—</span></div><div class="nao-row"><span>Подписка</span><span id="pSub">Нет подписки</span></div><div class="nao-row"><span>HWID</span><span id="pHwid">—</span></div><div class="nao-row"><span>Аккаунтов</span><span id="pCount">0</span></div><div class="nao-actions"><button class="nao-btn" data-act="changepw">Сменить пароль</button><button class="nao-btn danger" data-act="logout">Выйти</button></div></div></div></div></div><nav id="naoMobileNav"><a href="index.html">Главная</a><a href="purchase.html">Покупка</a><a href="documents.html">Документы</a><a href="account.html">Профиль</a></nav></div>
+<script id="nao-ui-script">
+(function(){if(document.getElementById('__auth_panel'))return;var USERS='nao_users',SESS='nao_session';function id(x){return document.getElementById(x);}function loadUsers(){try{return JSON.parse(localStorage.getItem(USERS))||{};}catch(e){return {};}}function saveUsers(u){localStorage.setItem(USERS,JSON.stringify(u));}function hash(salt,pw){var str=salt+'::'+pw,h=0x811c9dc5;for(var i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return ('00000000'+h.toString(16)).slice(-8)+str.length.toString(16);}function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}function cur(){return localStorage.getItem(SESS)||'';}function render(){var b=id('naoAuthBtn'),u=cur();b.innerHTML=u?('<a href="#" data-act="open-profile">'+esc(u)+'</a><button class="nao-out" data-act="logout">Выйти</button>'):'<button data-act="open-auth">Войти</button>';}function openO(){id('naoOverlay').classList.add('open');document.documentElement.style.overflow='hidden';}function closeO(){id('naoOverlay').classList.remove('open');document.documentElement.style.overflow='';}function setTab(t){var isL=t==='login';id('naoPaneLogin').hidden=!isL;id('naoPaneReg').hidden=isL;var tabs=document.querySelectorAll('.nao-tab');for(var i=0;i<tabs.length;i++)tabs[i].className='nao-tab'+(tabs[i].getAttribute('data-tab')===t?' active':'');id('naoLoginErr').textContent='';id('naoRegErr').textContent='';}function showAuth(t){id('naoProfileView').hidden=true;id('naoAuthView').hidden=false;setTab(t||'login');openO();}function showProfile(){var u=loadUsers()[cur()];if(!u){localStorage.removeItem(SESS);render();showAuth('login');return;}id('pLogin').textContent=u.username;id('pEmail').textContent=u.email||'—';id('pCreated').textContent=u.created?new Date(u.created).toLocaleString('ru-RU'):'—';id('pSub').textContent=u.sub||'Нет подписки';id('pHwid').textContent=u.hwid||'—';id('pCount').textContent=String(Object.keys(loadUsers()).length);id('naoAuthView').hidden=true;id('naoProfileView').hidden=false;openO();}function msg(i,t,ok){var e=id(i);e.textContent=t;e.style.color=ok?'#4ade80':'#f87171';}document.addEventListener('click',function(ev){var tg=ev.target;if(tg&&(tg.id==='naoOverlay'||tg.className==='nao-center')){closeO();return;}var t=tg.closest?tg.closest('[data-act],[data-tab]'):null;if(!t)return;var tab=t.getAttribute('data-tab');if(tab){ev.preventDefault();setTab(tab);return;}var act=t.getAttribute('data-act');if(act==='open-auth'){ev.preventDefault();showAuth('login');}else if(act==='open-profile'){ev.preventDefault();showProfile();}else if(act==='logout'){ev.preventDefault();localStorage.removeItem(SESS);render();closeO();}else if(act==='close'){ev.preventDefault();closeO();}else if(act==='register'){ev.preventDefault();var un=id('naoRegUn').value.trim(),em=id('naoRegEm').value.trim(),pw=id('naoRegPw').value,pw2=id('naoRegPw2').value;if(!un||!em||!pw){msg('naoRegErr','Заполните все поля');return;}if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg('naoRegErr','Некорректный email');return;}if(pw!==pw2){msg('naoRegErr','Пароли не совпадают');return;}if(pw.length<4){msg('naoRegErr','Пароль слишком короткий (мин. 4)');return;}var us=loadUsers();for(var k in us){if(us[k].username.toLowerCase()===un.toLowerCase()){msg('naoRegErr','Логин уже занят');return;}if((us[k].email||'').toLowerCase()===em.toLowerCase()){msg('naoRegErr','Почта уже используется');return;}}var salt=Math.random().toString(36).slice(2);us[un]={username:un,email:em,salt:salt,hash:hash(salt,pw),created:Date.now(),sub:null,hwid:'NVV-'+Math.random().toString(36).slice(2,10).toUpperCase()};saveUsers(us);localStorage.setItem(SESS,un);render();msg('naoRegErr','Аккаунт создан!',true);setTimeout(showProfile,450);}else if(act==='login'){ev.preventDefault();var iv=id('naoLoginId').value.trim(),p=id('naoLoginPw').value,us=loadUsers(),f=null;for(var k in us){if(us[k].username.toLowerCase()===iv.toLowerCase()||(us[k].email||'').toLowerCase()===iv.toLowerCase()){f=us[k];break;}}if(!f){msg('naoLoginErr','Пользователь не найден');return;}if(hash(f.salt,p)!==f.hash){msg('naoLoginErr','Неверный пароль');return;}localStorage.setItem(SESS,f.username);render();showProfile();}else if(act==='changepw'){ev.preventDefault();var u=loadUsers()[cur()];if(!u)return;var c=prompt('Текущий пароль:');if(c===null)return;if(hash(u.salt,c)!==u.hash){alert('Неверный текущий пароль');return;}var np=prompt('Новый пароль:');if(!np)return;if(np.length<4){alert('Слишком короткий');return;}var u2=loadUsers();u2[u.username].salt=Math.random().toString(36).slice(2);u2[u.username].hash=hash(u2[u.username].salt,np);saveUsers(u2);alert('Пароль изменён');}});document.addEventListener('keydown',function(e){if(e.key==='Escape')closeO();});render();})();</script>
 </body>
 </html>

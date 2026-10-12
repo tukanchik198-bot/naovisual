@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="dark">
+<head><style>
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px);filter:blur(4px)}to{opacity:1;transform:translateY(0) translateZ(0);filter:blur(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+</style>
+<!-- by https://t.me/darkvibe -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#09090b">
+<title>Sign in | NaoVisuals — Premium DLC</title>
+<link rel="icon" href="auth_files/explogo.svg">
+<link rel="stylesheet" href="auth_files/d3b04696b5f13553.css">
+<link rel="stylesheet" href="auth_files/e40074f82c91f54a.css">
+<link rel="stylesheet" href="auth_files/22210f07b4ffce21.css">
+<style>
+body{margin:0;min-height:100vh;background:#0a0a0c;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
+.rel{position:relative;min-height:100vh;width:100%;overflow:hidden;background:#0a0a0c}
+.bg-wrap{position:absolute;inset:0}
+.bg-img{width:100%;height:100%;object-fit:cover;object-position:center}
+.overlay{position:relative;z-index:1;display:flex;min-height:100vh;flex-direction:column}
+.blur1{position:absolute;inset:0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);mask-image:linear-gradient(to right,black 0%,transparent 100%);-webkit-mask-image:linear-gradient(to right,black 0%,transparent 100%)}
+.blur2{position:absolute;inset:0;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);mask-image:linear-gradient(to right,black 0%,transparent 80%);-webkit-mask-image:linear-gradient(to right,black 0%,transparent 80%)}
+.blur3{position:absolute;inset:0;backdrop-filter:blur(42px);-webkit-backdrop-filter:blur(42px);mask-image:linear-gradient(to right,black 0%,transparent 60%);-webkit-mask-image:linear-gradient(to right,black 0%,transparent 60%)}
+.gradient{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,12,.65) 0%,rgba(10,10,12,.4) 30%,rgba(10,10,12,.15) 55%,transparent 80%)}
+.content{position:relative;z-index:2;display:flex;flex-direction:column;padding:48px 40px 48px 64px;min-height:100vh}
+.logo{display:inline-block;margin-bottom:auto}
+.logo img{width:28px;height:28px}
+.form-area{flex:1;display:flex;align-items:center}
+.form-wrap{width:100%;max-width:440px}
+h1{font-size:clamp(2rem,4.5vw,2.85rem);font-weight:400;line-height:1.1;letter-spacing:-.02em;color:#fafafa;margin-bottom:12px;display:flex;flex-wrap:wrap}
+h1 span{display:inline-block}
+.subtitle{font-size:15px;color:#a1a1aa;line-height:1.6;margin-bottom:32px}
+.inp{width:100%;height:48px;border-radius:9999px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);padding:0 20px;color:#fafafa;font-size:14px;outline:none;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .2s,background .2s}
+.inp::placeholder{color:#71717a}
+.inp:focus{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.07)}
+.pw-wrap{position:relative}
+.pw-wrap .inp{padding-right:140px}
+.rst{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#a78bfa;font-size:12px;background:none;border:none;cursor:pointer;transition:color .2s}
+.rst:hover{color:#c4b5fd}
+.sub-btn{width:100%;height:48px;border-radius:9999px;background:#7c3aed;color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 24px rgba(124,58,237,.25);transition:all .2s}
+.sub-btn:hover{background:#6d28d9;box-shadow:0 12px 32px rgba(124,58,237,.3)}
+.sub-btn svg{width:16px;height:16px;transition:transform .2s}
+.sub-btn:hover svg{transform:translateX(2px)}
+.switch{margin-top:24px;font-size:13px;color:#71717a}
+.switch button{font-weight:600;color:#a78bfa;background:none;border:none;cursor:pointer;font-size:13px;transition:color .2s}
+.switch button:hover{color:#c4b5fd}
+.error{color:#f87171;font-size:13px;margin-bottom:16px;text-align:center}
+.footer{position:absolute;bottom:32px;left:64px;z-index:2;font-size:12px;color:#52525b}
+.footer a{color:#71717a;text-decoration:none;transition:color .2s}
+.footer a:hover{color:#e2e8f0}
+.form-box{display:none}
+.form-box.active{display:block}
+</style>
+</head>
+<!-- by https://t.me/darkvibe -->
+<body>
+<div class="rel">
+  <div class="bg-wrap"><img class="bg-img" src="auth_files/logpage.png" alt=""></div>
+  <div class="blur1"></div><div class="blur2"></div><div class="blur3"></div>
+  <div class="gradient"></div>
+  <div class="overlay">
+    <a class="logo" href="/"><img src="auth_files/explogo.svg" alt="NaoVisuals"></a>
+    <div class="form-area">
+      <div class="form-wrap">
+        <h1 id="title"><span>С возвращением в </span><span>NaoVisuals</span></h1>
+        <p class="subtitle" id="sub">Войдите в свой аккаунт</p>
+        <div class="error" id="err" style="display:none"></div>
+
+        <div class="form-box active" id="f_login">
+          <form method="POST" action="/auth">
+            <input type="hidden" name="action" value="login">
+            <div style="margin-bottom:16px"><input class="inp" type="text" name="username" placeholder="Email или логин" required></div>
+            <div class="pw-wrap" style="margin-bottom:0"><input class="inp" type="password" name="password" placeholder="Ваш пароль" required><button class="rst" type="button" onclick="this.closest('form').reset()">Сбросить пароль</button></div>
+            <button class="sub-btn" type="submit"><span>войти</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          </form>
+        </div>
+
+        <div class="form-box" id="f_reg">
+          <form method="POST" action="/auth">
+            <input type="hidden" name="action" value="register">
+            <div style="margin-bottom:16px"><input class="inp" type="text" name="username" placeholder="Имя пользователя" required></div>
+            <div style="margin-bottom:16px"><input class="inp" type="email" name="email" placeholder="Email" required></div>
+            <div style="margin-bottom:0"><input class="inp" type="password" name="password" placeholder="Пароль" required minlength="4"></div>
+            <button class="sub-btn" type="submit"><span>создать аккаунт</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          </form>
+        </div>
+
+        <p class="switch"><span id="sw_l">Нет аккаунта? </span><button id="sw_b" onclick="sw()">Регистрация</button></p>
+      </div>
+    </div>
+    <div class="footer">Документы: <a href="/documents">Пользовательское соглашение</a> · <a href="/documents">Политика конфиденциальности</a></div>
+  </div>
+</div>
+<script>
+var lg=true;
+function sw(){lg=!lg;document.getElementById('f_login').classList.toggle('active',lg);document.getElementById('f_reg').classList.toggle('active',!lg);document.getElementById('title').innerHTML=lg?'<span>С возвращением в </span><span>NaoVisuals</span>':'<span>Регистрация в </span><span>NaoVisuals</span>';document.getElementById('sub').textContent=lg?'Войдите в свой аккаунт':'Создайте новый аккаунт';document.getElementById('sw_l').textContent=lg?'Нет аккаунта? ':'Уже есть аккаунт? ';document.getElementById('sw_b').textContent=lg?'Регистрация':'Войти'}
+</script>
+</body>
+</html>
